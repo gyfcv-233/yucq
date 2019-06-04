@@ -1,1 +1,29 @@
-yucq is a nice man 
+#urlparse
+from urllib.parse import urlparse,urlunparse,urljoin,urlencode
+result = urlparse('http"//www.baidu.com/index.html;user?id=5#comment')
+print(type(result),result)
+result1 = urlparse('www.baidu.com/index.html;user?id=5#comment',scheme='https')
+print(result1)
+result3 = urlparse('http"//www.baidu.com/index.html;user?id=5#comment',scheme='https')
+print(result3)
+
+#锚点连接
+result4 = urlparse('http"//www.baidu.com/index.html;user?id=5#comment',allow_fragments=False)
+print(result4)
+result5 = urlparse('http"//www.baidu.com/index.html#comment',allow_fragments=False)
+print(result5)
+
+#urlunparse 是urlparse的反函数
+data=['http','www.baidu.com','index.html','user','a=6','comment']
+print(urlunparse(data))
+
+#urljion  拼接URL，后面补充
+print(urljoin('http://www.baidu.com','FAQ.html'))
+print(urljoin('http://www.baidu.com','https://cuiqingcai.com/FAQ.html'))
+print(urljoin('http://www.baidu.com/about.html','https://cuiqingcai.com/FAQ.html?question=2'))
+
+#urlencode把字典对象转成get请求参数
+params={'name':'germey','age':22}
+base_url='http://www,baidu.com?'
+url= base_url+urlencode(params)
+print(url)
